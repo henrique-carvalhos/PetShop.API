@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Application.Commands.CreateUser;
 using PetShop.Application.Queries.GetAllUsers;
 using PetShop.Application.Queries.GetUser;
 using System.Threading.Tasks;
@@ -33,6 +34,14 @@ namespace PetShop.API.Controllers
             var users = await _mediator.Send(getAllUsers);
 
             return Ok(users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
+        {
+            var id = await _mediator.Send(command);
+
+            return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
     }
 }
