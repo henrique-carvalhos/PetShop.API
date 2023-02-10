@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PetShop.Application.Commands.CreateConsultation;
+using PetShop.Application.Commands.UpdateConsultation;
 using PetShop.Application.Queries.GetAllConsultations;
 using PetShop.Application.Queries.GetConsultation;
 using System.Threading.Tasks;
@@ -42,6 +43,14 @@ namespace PetShop.API.Controllers
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById),new { id = id }, command);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateConsultationCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

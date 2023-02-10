@@ -30,12 +30,17 @@ namespace PetShop.Infrastructure.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Consultation> GetConsultationAsync(int id)
+        public async Task<Consultation> GetConsultationByIdAsync(int id)
         {
             return await _dbContext.Consultations
                 .Include(p => p.Client)
                 .Include(p => p.Pet)
                 .SingleOrDefaultAsync(p => p.IdConsultation == id);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

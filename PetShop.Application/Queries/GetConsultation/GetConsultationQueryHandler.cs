@@ -19,7 +19,7 @@ namespace PetShop.Application.Queries.GetConsultation
         }
         public async Task<ConsultationViewModel> Handle(GetConsultationQuery request, CancellationToken cancellationToken)
         {
-            var consultation = await _consultationRepository.GetConsultationAsync(request.Id);
+            var consultation = await _consultationRepository.GetConsultationByIdAsync(request.Id);
 
             var consultationViewModel = new ConsultationViewModel(
                 consultation.IdConsultation, 

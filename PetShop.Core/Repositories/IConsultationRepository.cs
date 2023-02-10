@@ -9,8 +9,9 @@ namespace PetShop.Core.Repositories
 {
     public interface IConsultationRepository
     {
-        Task<Consultation> GetConsultationAsync(int id);
+        Task<Consultation> GetConsultationByIdAsync(int id);
         Task<List<Consultation>> GetAllConsultationAsync();
-       Task AddAsync(Consultation consultation);
+        Task AddAsync(Consultation consultation);
+        Task SaveChangesAsync();
     }
 }

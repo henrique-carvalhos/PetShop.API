@@ -27,5 +27,10 @@ namespace PetShop.Core.Entities
         public int IdClient { get; private set; }
         public User Vet { get; private set; }//correto
         public int IdVet { get; private set; }//correto
+
+        public void Update(decimal totalCost)
+        {
+            TotalCost = totalCost;
+        }
     }
 }
