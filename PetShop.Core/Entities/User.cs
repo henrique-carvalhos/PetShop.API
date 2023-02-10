@@ -41,5 +41,13 @@ namespace PetShop.Core.Entities
             Cpf = cpf;
             Sex = sex;
         }
+
+        public void Inactive()
+        {
+            if(Active == true)
+            {
+                Active= false;
+            }
+        }
     }
 }

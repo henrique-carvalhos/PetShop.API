@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 using PetShop.Application.Commands.CreateUser;
+using PetShop.Application.Commands.DeleteUser;
 using PetShop.Application.Commands.UpdateUser;
 using PetShop.Application.Queries.GetAllUsers;
 using PetShop.Application.Queries.GetUser;
@@ -53,5 +54,16 @@ namespace PetShop.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var user = new DeleteUserCommand(id);
+
+            await _mediator.Send(user);
+
+            return NoContent();
+        }
+
     }
 }
