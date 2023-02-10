@@ -8,10 +8,12 @@ namespace PetShop.Core.Entities
 {
     public class Consultation : BaseEntity
     {
-        public Consultation(int idConsultation, decimal totalCost)
+        public Consultation(decimal totalCost, int idPet, int idClient, int idVet)
         {
-            IdConsultation = idConsultation;
             TotalCost = totalCost;
+            IdPet = idPet;
+            IdClient = idClient;
+            IdVet = idVet;
 
             ConsultationDate = DateTime.Now;
         }

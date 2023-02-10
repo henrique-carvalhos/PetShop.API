@@ -11,5 +11,6 @@ namespace PetShop.Core.Repositories
     {
         Task<Consultation> GetConsultationAsync(int id);
         Task<List<Consultation>> GetAllConsultationAsync();
+       Task AddAsync(Consultation consultation);
     }
 }

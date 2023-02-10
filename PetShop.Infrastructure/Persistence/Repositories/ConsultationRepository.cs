@@ -17,6 +17,11 @@ namespace PetShop.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task AddAsync(Consultation consultation)
+        {
+            await _dbContext.Consultations.AddAsync(consultation);
+        }
+
         public async Task<List<Consultation>> GetAllConsultationAsync()
         {
             return await _dbContext.Consultations

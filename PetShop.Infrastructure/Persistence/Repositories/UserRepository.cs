@@ -17,6 +17,11 @@ namespace PetShop.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task AddAsync(User user)
+        {
+            await _dbContext.Users.AddAsync(user);
+        }
+
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _dbContext.Users.ToListAsync();

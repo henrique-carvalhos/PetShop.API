@@ -6,9 +6,8 @@ namespace PetShop.Core.Entities
 {
     public class User : BaseEntity
     {
-        public User(int idUser, string fullName, DateTime birthDate, string email, string cpf, char sex)
+        public User(string fullName, DateTime birthDate, string email, string cpf, char sex)
         {
-            IdUser = idUser;
             FullName = fullName;
             BirthDate = birthDate;
             Email = email;
