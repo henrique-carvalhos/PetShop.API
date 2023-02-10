@@ -12,5 +12,6 @@ namespace PetShop.Core.Repositories
         Task<User> GetByIdAsync(int id);
         Task<List<User>> GetAllUsersAsync();
         Task AddAsync(User user);
+        Task SaveChangesAsync();
     }
 }

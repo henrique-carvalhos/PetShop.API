@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Update.Internal;
 using PetShop.Application.Commands.CreateUser;
+using PetShop.Application.Commands.UpdateUser;
 using PetShop.Application.Queries.GetAllUsers;
 using PetShop.Application.Queries.GetUser;
 using System.Threading.Tasks;
@@ -42,6 +44,14 @@ namespace PetShop.API.Controllers
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateUserCommand command)
+        {
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

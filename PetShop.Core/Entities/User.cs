@@ -32,5 +32,14 @@ namespace PetShop.Core.Entities
         public List<Address> Addresses { get; private set; }
         public List<Pet> Pets { get; private set; }
         public List<Consultation> Consultations { get; private set; }
+
+        public void Update(string fullName, DateTime birthDate, string email, string cpf, char sex)
+        {
+            FullName = fullName;
+            BirthDate = birthDate;
+            Email = email;
+            Cpf = cpf;
+            Sex = sex;
+        }
     }
 }
