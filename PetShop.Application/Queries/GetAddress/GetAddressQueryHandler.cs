@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using MediatR;
 using PetShop.Application.ViewModels;
 using PetShop.Core.Repositories;
@@ -6,10 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+>>>>>>> a87d793ea8b2780862709b87271a4f1d9d25b8cc
 using System.Threading.Tasks;
 
 namespace PetShop.Application.Queries.GetAddress
 {
+<<<<<<< HEAD
     public class GetAddressQueryHandler : IRequestHandler<GetAddressQuery, AddressViewModel>
     {
         private readonly IAddressRepository _addressRepository;
@@ -33,5 +41,9 @@ namespace PetShop.Application.Queries.GetAddress
 
             return addressViewModel;
         }
+=======
+    public class GetAddressQueryHandler
+    {
+>>>>>>> a87d793ea8b2780862709b87271a4f1d9d25b8cc
     }
 }

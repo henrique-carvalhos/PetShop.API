@@ -10,8 +10,8 @@ using PetShop.Infrastructure.Persistence;
 namespace PetShop.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(PetShopDbContext))]
-    [Migration("20230129220113_UpdateMigration")]
-    partial class UpdateMigration
+    [Migration("20230211220523_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

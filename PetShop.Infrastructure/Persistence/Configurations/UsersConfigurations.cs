@@ -11,10 +11,10 @@ namespace PetShop.Infrastructure.Persistence.Configurations
             builder
             .HasKey(p => p.IdUser);
 
-            builder
-                .HasOne(p => p.Address)
-                .WithOne(p => p.User)
-                .HasForeignKey<Address>(p => p.IdAddress);
+            //builder
+            //    .HasOne(p => p.Address)
+            //    .WithOne(p => p.User)
+            //    .HasForeignKey<Address>(p => p.IdAddress);
         }
     }
 }
