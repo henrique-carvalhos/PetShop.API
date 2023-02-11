@@ -28,6 +28,6 @@ namespace PetShop.Core.Entities
         public string ZipCode { get; private set; }
         public Client Client { get; private set; }
         public int IdClient { get; private set; }
-        public User User { get; private set; }
+        //public User User { get; private set; }
     }
 }
