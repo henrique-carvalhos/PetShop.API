@@ -22,7 +22,9 @@ namespace PetShop.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("PetShop.Core.Entities.Address", b =>
                 {
                     b.Property<int>("IdAddress")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -192,6 +194,9 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("AddressIdAddress")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
@@ -216,17 +221,13 @@ namespace PetShop.Infrastructure.Persistence.Migrations
 
                     b.HasKey("IdUser");
 
+                    b.HasIndex("AddressIdAddress");
+
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PetShop.Core.Entities.Address", b =>
                 {
-                    b.HasOne("PetShop.Core.Entities.User", "User")
-                        .WithOne("Address")
-                        .HasForeignKey("PetShop.Core.Entities.Address", "IdAddress")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("PetShop.Core.Entities.Client", "Client")
                         .WithMany("Addresses")
                         .HasForeignKey("IdClient")
@@ -238,8 +239,6 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                         .HasForeignKey("UserIdUser");
 
                     b.Navigation("Client");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PetShop.Core.Entities.Client", b =>
@@ -299,6 +298,15 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("PetShop.Core.Entities.User", b =>
+                {
+                    b.HasOne("PetShop.Core.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressIdAddress");
+
+                    b.Navigation("Address");
+                });
+
             modelBuilder.Entity("PetShop.Core.Entities.Client", b =>
                 {
                     b.Navigation("Addresses");
@@ -315,8 +323,6 @@ namespace PetShop.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("PetShop.Core.Entities.User", b =>
                 {
-                    b.Navigation("Address");
-
                     b.Navigation("Addresses");
 
                     b.Navigation("Clients");

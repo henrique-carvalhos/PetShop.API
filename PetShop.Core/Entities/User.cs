@@ -26,10 +26,10 @@ namespace PetShop.Core.Entities
         public char Sex { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public bool Active { get; private set; }
-        public Address Address { get; private set; }//correto
+        //public Address Address { get; private set; }//correto
 
         public List<Client> Clients { get; private set; }
-        public List<Address> Addresses { get; private set; }
+        //public List<Address> Addresses { get; private set; }
         public List<Pet> Pets { get; private set; }
         public List<Consultation> Consultations { get; private set; }
 

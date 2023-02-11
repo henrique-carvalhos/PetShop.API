@@ -20,6 +20,7 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                     Sex = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
+                    AddressIdAddress = table.Column<int>(type: "int", nullable: true),
                     Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -58,7 +59,8 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    IdAddress = table.Column<int>(type: "int", nullable: false),
+                    IdAddress = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HouseNumber = table.Column<int>(type: "int", nullable: false),
                     District = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -78,12 +80,6 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                         principalTable: "Clients",
                         principalColumn: "IdClient",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Users_IdAddress",
-                        column: x => x.IdAddress,
-                        principalTable: "Users",
-                        principalColumn: "IdUser",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Addresses_Users_UserIdUser",
                         column: x => x.UserIdUser,
@@ -200,12 +196,30 @@ namespace PetShop.Infrastructure.Persistence.Migrations
                 name: "IX_Pets_IdUser",
                 table: "Pets",
                 column: "IdUser");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_AddressIdAddress",
+                table: "Users",
+                column: "AddressIdAddress");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Users_Addresses_AddressIdAddress",
+                table: "Users",
+                column: "AddressIdAddress",
+                principalTable: "Addresses",
+                principalColumn: "IdAddress",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Addresses");
+            migrationBuilder.DropForeignKey(
+                name: "FK_Addresses_Clients_IdClient",
+                table: "Addresses");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Addresses_Users_UserIdUser",
+                table: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "Consultations");
@@ -218,6 +232,9 @@ namespace PetShop.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Addresses");
         }
     }
 }
