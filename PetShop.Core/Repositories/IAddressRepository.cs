@@ -11,5 +11,7 @@ namespace PetShop.Core.Repositories
     {
         Task<Address> GetAddressById(int id);
         Task<List<Address>> GetAllAddresses();
+        Task AddAsync(Address address);
+        Task SavaChangesAsync();
     }
 }

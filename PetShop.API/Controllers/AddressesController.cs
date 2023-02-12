@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PetShop.Application.Commands.CreateAddress;
-using PetShop.Application.Commands.DeleteAddress;
 using PetShop.Application.Commands.UpdateAddress;
 using PetShop.Application.Queries.GetAddress;
 using PetShop.Application.Queries.GetAllAddress;
@@ -52,16 +51,6 @@ namespace PetShop.API.Controllers
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var command = new DeleteAddressCommand(id);
-
-            await _mediator.Send(command);
-
-            return NoContent();
         }
     }
 }

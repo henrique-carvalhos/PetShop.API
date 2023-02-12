@@ -16,6 +16,13 @@ namespace PetShop.Infrastructure.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
+
+        public async Task AddAsync(Address address)
+        {
+            await _dbContext.Addresses.AddAsync(address);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<Address> GetAddressById(int id)
         {
             return await _dbContext.Addresses
@@ -28,6 +35,11 @@ namespace PetShop.Infrastructure.Persistence.Repositories
             return await _dbContext.Addresses
                 .Include(p => p.Client)
                 .ToListAsync();
+        }
+
+        public async Task SavaChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

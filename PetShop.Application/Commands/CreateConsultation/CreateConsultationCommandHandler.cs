@@ -24,6 +24,8 @@ namespace PetShop.Application.Commands.CreateConsultation
 
             await _conultationRepository.AddAsync(consultation);
 
+            await _conultationRepository.SaveChangesAsync();
+
             return consultation.IdConsultation;
         }
     }

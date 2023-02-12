@@ -8,15 +8,15 @@ namespace PetShop.Core.Entities
 {
     public class Address : BaseEntity
     {
-        public Address(int idAddress, string street, int houseNumber, string district, string city, string state, string zipCode)
+        public Address(string street, int houseNumber, string district, string city, string state, string zipCode, int idClient)
         {
-            IdAddress = idAddress;
             Street = street;
             HouseNumber = houseNumber;
             District = district;
             City = city;
             State = state;
             ZipCode = zipCode;
+            IdClient = idClient;
         }
 
         public int IdAddress { get; private set; }
@@ -29,5 +29,15 @@ namespace PetShop.Core.Entities
         public Client Client { get; private set; }
         public int IdClient { get; private set; }
         //public User User { get; private set; }
+
+        public void Update(string street, int houseNumber, string district, string city, string state, string zipCode)
+        {
+            Street = street;
+            HouseNumber = houseNumber;
+            District = district;
+            City = city;
+            State = state;
+            ZipCode = zipCode;
+        }
     }
 }
