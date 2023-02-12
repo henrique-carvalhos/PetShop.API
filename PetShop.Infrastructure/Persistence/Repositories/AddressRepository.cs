@@ -22,5 +22,12 @@ namespace PetShop.Infrastructure.Persistence.Repositories
                 .Include(p => p.Client)
                 .SingleOrDefaultAsync(p => p.IdAddress == id);
         }
+
+        public async Task<List<Address>> GetAllAddresses()
+        {
+            return await _dbContext.Addresses
+                .Include(p => p.Client)
+                .ToListAsync();
+        }
     }
 }

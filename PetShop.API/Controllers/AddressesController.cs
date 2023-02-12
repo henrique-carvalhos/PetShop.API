@@ -1,15 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PetShop.Application.Commands.CreateAddress;
-using PetShop.Application.Commands.CreateClient;
 using PetShop.Application.Commands.DeleteAddress;
-using PetShop.Application.Commands.DeleteClient;
 using PetShop.Application.Commands.UpdateAddress;
-using PetShop.Application.Commands.UpdateClient;
 using PetShop.Application.Queries.GetAddress;
 using PetShop.Application.Queries.GetAllAddress;
-using PetShop.Application.Queries.GetAllClients;
-using PetShop.Application.Queries.GetClient;
 using System.Threading.Tasks;
 
 namespace PetShop.API.Controllers
@@ -28,9 +23,9 @@ namespace PetShop.API.Controllers
         {
             var query = new GetAddressQuery(id);
 
-            var client = await _mediator.Send(query);
+            var address = await _mediator.Send(query);
 
-            return Ok(client);
+            return Ok(address);
         }
 
         [HttpGet]
@@ -38,9 +33,9 @@ namespace PetShop.API.Controllers
         {
             var getAllAddresses = new GetAllAddressesQuery();
 
-            var clients = await _mediator.Send(getAllAddresses);
+            var addresses = await _mediator.Send(getAllAddresses);
 
-            return Ok(clients);
+            return Ok(addresses);
         }
 
         [HttpPut("{id}")]

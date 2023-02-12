@@ -10,5 +10,6 @@ namespace PetShop.Core.Repositories
     public interface IAddressRepository
     {
         Task<Address> GetAddressById(int id);
+        Task<List<Address>> GetAllAddresses();
     }
 }
