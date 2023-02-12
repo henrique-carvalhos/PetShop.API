@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO%27s\" />
+    <Compile Remove="DTO%27s\**" />
+    <EmbeddedResource Remove="DTO%27s\**" />
+    <None Remove="DTO%27s\**" />
   </ItemGroup>
 
 </Project>

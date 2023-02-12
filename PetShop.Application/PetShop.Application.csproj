@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InputModels\" />
+    <Compile Remove="InputModels\**" />
+    <EmbeddedResource Remove="InputModels\**" />
+    <None Remove="InputModels\**" />
   </ItemGroup>
 
   <ItemGroup>

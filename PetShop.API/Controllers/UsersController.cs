@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 using PetShop.Application.Commands.CreateUser;
 using PetShop.Application.Commands.DeleteUser;
 using PetShop.Application.Commands.UpdateUser;
